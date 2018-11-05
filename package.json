@@ -3,7 +3,7 @@
     "composer": "^0.20.3"
   },
   "name": "asset-transfer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Asset Transfer Business Network",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/asset-transfer.bna",
