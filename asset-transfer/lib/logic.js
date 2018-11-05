@@ -19,25 +19,13 @@
 
 /**
  * Sample transaction
- * @param {org.bbc.SampleTransaction} sampleTransaction
+ * @param {org.bbc.trade} txp
  * @transaction
  */
-async function sampleTransaction(tx) {
-    // Save the old value of the asset.
-    const oldValue = tx.asset.value;
-
-    // Update the asset with the new value.
-    tx.asset.value = tx.newValue;
-
-    // Get the asset registry for the asset.
-    const assetRegistry = await getAssetRegistry('org.bbc.SampleAsset');
-    // Update the asset in the asset registry.
-    await assetRegistry.update(tx.asset);
-
-    // Emit an event for the modified asset.
-    let event = getFactory().newEvent('org.bbc', 'SampleEvent');
-    event.asset = tx.asset;
-    event.oldValue = oldValue;
-    event.newValue = tx.newValue;
-    emit(event);
+async function AssetTransfer(txp) {
+    txp.trcomodity.owner = txp.newuserid;
+    return getAssetRegistry('org.bbc.comodity')
+    .then (function(assetRegistry){
+        return assetRegistry.update(txp.trcomodity);
+    });
 }
