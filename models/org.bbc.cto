@@ -18,25 +18,21 @@
 
 namespace org.bbc
 
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
+participant user identified by userid {
+  o String email
+  o String firstname
+  o String lastname
+  o String userid
 }
 
-asset SampleAsset identified by assetId {
+asset comodity identified by assetId {
   o String assetId
-  --> SampleParticipant owner
   o String value
+  o String description
+  o String owner
 }
 
-transaction SampleTransaction {
-  --> SampleAsset asset
-  o String newValue
-}
-
-event SampleEvent {
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
+transaction trade {
+  o String newuserid
+  --> comodity trcomodity
 }
